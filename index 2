@@ -1,0 +1,876 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopKart - Online Shopping</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        /* HEADER */
+
+        header {
+            background-color: #2874f0;
+            color: white;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            padding: 10px 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            display: flex;
+            width: 45%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-box button {
+            padding: 13px 20px;
+            border: none;
+            background-color: #ff9f00;
+            color: white;
+            cursor: pointer;
+        }
+
+        .login {
+            background-color: white;
+            color: #2874f0;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .cart {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+
+        /* NAVIGATION */
+
+        nav {
+            background-color: white;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 5px #ccc;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #2874f0;
+        }
+
+
+        /* HERO BANNER */
+
+        .hero {
+            height: 350px;
+
+            background: linear-gradient(
+                90deg,
+                #2874f0,
+                #6a11cb
+            );
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .shop-button {
+            background-color: #ff9f00;
+            color: white;
+            border: none;
+
+            padding: 14px 35px;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .shop-button:hover {
+            background-color: #fb8c00;
+        }
+
+
+        /* CATEGORIES */
+
+        .section {
+            padding: 40px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .category {
+            background-color: white;
+
+            width: 180px;
+            padding: 25px;
+
+            text-align: center;
+
+            border-radius: 8px;
+
+            box-shadow: 0 2px 8px #ccc;
+
+            cursor: pointer;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            transition: 0.3s;
+        }
+
+        .category-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+
+        /* PRODUCTS */
+
+        .products {
+            display: flex;
+            justify-content: center;
+
+            gap: 25px;
+
+            flex-wrap: wrap;
+        }
+
+        .product {
+            background-color: white;
+
+            width: 250px;
+
+            padding: 20px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 2px 8px #ccc;
+
+            text-align: center;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            transition: 0.3s;
+        }
+
+        .product-image {
+            height: 170px;
+
+            background-color: #eeeeee;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 80px;
+
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #e53935 !important;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .add-cart {
+            width: 100%;
+
+            padding: 12px;
+
+            background-color: #2874f0;
+
+            color: white;
+
+            border: none;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            border-radius: 4px;
+        }
+
+        .add-cart:hover {
+            background-color: #1255c5;
+        }
+
+
+        /* OFFER */
+
+        .offer {
+            background-color: #ff9f00;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 45px;
+        }
+
+        .offer h2 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .offer p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .offer button {
+            padding: 12px 30px;
+
+            border: none;
+
+            background-color: white;
+
+            color: #ff8c00;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            background-color: #172337;
+
+            color: white;
+
+            padding: 40px;
+
+            display: flex;
+
+            justify-content: space-around;
+
+            flex-wrap: wrap;
+
+            gap: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            color: #ddd;
+        }
+
+        .copyright {
+            background-color: #0d1726;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 15px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            header {
+                height: auto;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-box {
+                width: 90%;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 8px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            footer {
+                text-align: center;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            🛒 ShopKart
+        </div>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search for products..."
+            >
+
+            <button onclick="searchProduct()">
+                Search
+            </button>
+
+        </div>
+
+        <div class="login" onclick="login()">
+            Login
+        </div>
+
+        <div class="cart">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </div>
+
+    </header>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="#">Home</a>
+
+        <a href="#categories">
+            Categories
+        </a>
+
+        <a href="#products">
+            Products
+        </a>
+
+        <a href="#offers">
+            Offers
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div>
+
+            <h1>
+                Big Shopping Sale!
+            </h1>
+
+            <p>
+                Get up to 50% OFF on selected products
+            </p>
+
+            <button
+                class="shop-button"
+                onclick="goToProducts()"
+            >
+                Shop Now
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section
+        class="section"
+        id="categories"
+    >
+
+        <h2 class="section-title">
+            Shop By Category
+        </h2>
+
+        <div class="categories">
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobiles
+                </h3>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Laptops
+                </h3>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    👕
+                </div>
+
+                <h3>
+                    Fashion
+                </h3>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🎧
+                </div>
+
+                <h3>
+                    Electronics
+                </h3>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Books
+                </h3>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section
+        class="section"
+        id="products"
+    >
+
+        <h2 class="section-title">
+            Featured Products
+        </h2>
+
+
+        <div class="products">
+
+
+            <!-- PRODUCT 1 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    📱
+                </div>
+
+                <h3>
+                    Smartphone
+                </h3>
+
+                <p>
+                    Latest Android Smartphone
+                </p>
+
+                <p class="price">
+                    ₹24,999
+                </p>
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart('Smartphone')"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    💻
+                </div>
+
+                <h3>
+                    Laptop
+                </h3>
+
+                <p>
+                    High Performance Laptop
+                </p>
+
+                <p class="price">
+                    ₹59,999
+                </p>
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart('Laptop')"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    🎧
+                </div>
+
+                <h3>
+                    Headphones
+                </h3>
+
+                <p>
+                    Wireless Bluetooth Headphones
+                </p>
+
+                <p class="price">
+                    ₹2,999
+                </p>
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart('Headphones')"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    ⌚
+                </div>
+
+                <h3>
+                    Smart Watch
+                </h3>
+
+                <p>
+                    Fitness Smart Watch
+                </p>
+
+                <p class="price">
+                    ₹3,999
+                </p>
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart('Smart Watch')"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- OFFER -->
+
+    <section
+        class="offer"
+        id="offers"
+    >
+
+        <h2>
+            🎉 Special Offer 🎉
+        </h2>
+
+        <p>
+            Use coupon code
+            <b>SHOP50</b>
+            and get extra 10% OFF
+        </p>
+
+        <button onclick="showOffer()">
+            Get Offer
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer id="contact">
+
+
+        <div>
+
+            <h3>
+                ShopKart
+            </h3>
+
+            <p>
+                Your one-stop online shopping website.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <p>
+                Home
+            </p>
+
+            <p>
+                Products
+            </p>
+
+            <p>
+                Offers
+            </p>
+
+            <p>
+                Contact
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                Contact Us
+            </h3>
+
+            <p>
+                📧 shopkart@gmail.com
+            </p>
+
+            <p>
+                📞 +91 98765 43210
+            </p>
+
+            <p>
+                📍 India
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+    <div class="copyright">
+
+        © 2026 ShopKart | All Rights Reserved
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let cartCount = 0;
+
+
+        function addToCart(product) {
+
+            cartCount++;
+
+            document.getElementById(
+                "cart-count"
+            ).innerText = cartCount;
+
+            alert(
+                product + " added to cart!"
+            );
+
+        }
+
+
+        function searchProduct() {
+
+            let product =
+                document.getElementById(
+                    "search"
+                ).value;
+
+            if (product.trim() === "") {
+
+                alert(
+                    "Please enter a product name."
+                );
+
+            } else {
+
+                alert(
+                    "Searching for: " + product
+                );
+
+            }
+
+        }
+
+
+        function login() {
+
+            alert(
+                "Login page will open here."
+            );
+
+        }
+
+
+        function goToProducts() {
+
+            document
+                .getElementById("products")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        function showOffer() {
+
+            alert(
+                "Coupon SHOP50 applied! You get 10% OFF."
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+```
