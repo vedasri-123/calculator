@@ -1,116 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Restricted Form</title>
 
-    <title>JavaScript Arithmetic Demo</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- INTERNAL JAVASCRIPT -->
-    <script>
-        function addNumbers() {
-            let a = Number(document.getElementById("first").value);
-            let b = Number(document.getElementById("second").value);
-
-            document.getElementById("result").innerHTML = a + b;
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #36d1dc, #5b86e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
 
-        function subtractNumbers() {
-            let a = Number(document.getElementById("first").value);
-            let b = Number(document.getElementById("second").value);
-
-            document.getElementById("result").innerHTML = a - b;
+        .form-box {
+            background-color: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
         }
-    </script>
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #5b5bea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3333cc;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="form-box">
 
-        <h1>JavaScript Arithmetic Demo</h1>
+        <h1>Form Submission Demo</h1>
 
-        <!-- INPUT SECTION -->
-        <div class="input-section">
+        <form onsubmit="checkAge(event)">
 
-            <label>First Number</label>
-            <input type="number" id="first" placeholder="Enter first number">
+            <label>Name:</label>
+            <input type="text" id="name" required>
 
-            <label>Second Number</label>
-            <input type="number" id="second" placeholder="Enter second number">
+            <label>Email:</label>
+            <input type="email" id="email" required>
 
-        </div>
+            <label>Age:</label>
+            <input type="number" id="age" min="1" max="120" required>
 
-        <!-- RESULT -->
-        <div class="result-box">
-            <h2>Result: <span id="result">0</span></h2>
-        </div>
+            <button type="submit">Submit</button>
 
-        <!-- INTERNAL JAVASCRIPT -->
-        <div class="section internal">
+        </form>
 
-            <h2>Internal JavaScript</h2>
-
-            <button onclick="addNumbers()">Add</button>
-
-            <button onclick="subtractNumbers()">Subtract</button>
-
-        </div>
-
-        <!-- EXTERNAL JAVASCRIPT -->
-        <div class="section external">
-
-            <h2>External JavaScript</h2>
-
-            <button onclick="multiplyNumbers()">Multiply</button>
-
-            <button onclick="divideNumbers()">Divide</button>
-
-        </div>
-
-        <!-- INLINE JAVASCRIPT -->
-        <div class="section inline">
-
-            <h2>Inline JavaScript</h2>
-
-            <button onclick="
-                document.getElementById('result').innerHTML =
-                Number(document.getElementById('result').innerHTML) + 1;
-            ">
-                Increment
-            </button>
-
-            <button onclick="
-                document.getElementById('result').innerHTML =
-                Number(document.getElementById('result').innerHTML) - 1;
-            ">
-                Decrement
-            </button>
-
-            <button onclick="
-                document.getElementById('result').innerHTML = 0;
-            ">
-                Clear
-            </button>
-
-            <button onclick="
-                alert('Hi! Welcome to JavaScript Arithmetic Demo!');
-            ">
-                Click here to say hi
-            </button>
-
-        </div>
-
-        <p class="footer">
-            HTML • CSS • JavaScript
-        </p>
+        <p id="result"></p>
 
     </div>
 
-    <!-- EXTERNAL JAVASCRIPT -->
-    <script src="script.js"></script>
+    <script>
+        function checkAge(event) {
+
+            event.preventDefault();
+
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var age = document.getElementById("age").value;
+
+            var result = document.getElementById("result");
+
+            if (age < 18) {
+
+                result.innerHTML =
+                    "❌ Access Denied! You must be 18 or older.";
+
+                result.style.color = "red";
+
+            } else {
+
+                result.innerHTML =
+                    "✅ Form Submitted Successfully!<br>" +
+                    "Welcome " + name + "!";
+
+                result.style.color = "green";
+            }
+        }
+    </script>
 
 </body>
 </html>
